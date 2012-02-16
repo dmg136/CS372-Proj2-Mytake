@@ -9,7 +9,12 @@ typedef int Tid;
 
 
 typedef struct ThrdCtlBlk{
-  /* ... Fill this in ... */
+
+  ucontext_t my_context;
+  Tid my_tid;
+  struct ThrdCtlBlk *my_next;
+  struct ThrdCtlBlk *my_prev;
+  
 } ThrdCtlBlk;
 
 
@@ -36,7 +41,7 @@ Tid ULT_CreateThread(void (*fn)(void *), void *parg);
 Tid ULT_Yield(Tid tid);
 Tid ULT_DestroyThread(Tid tid);
 
-
+Tid first_call_func();
  
 
 
